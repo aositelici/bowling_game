@@ -1,33 +1,19 @@
 'use strict';
 
-var _ = require('lodash');
-var Frame = require('./model/frame');
-
-function GoalString() {
+function GoalString(string) {
+  this.string = string;
   this.stringArray = [];
 }
 
-GoalString.prototype.getStringArray = function (string) {
-  var stringArray = string.split('|');
+GoalString.prototype.getStringArray = function () {
+  var stringArray = this.string.split('|');
   var _this = this;
   stringArray.map(function (s) {
     if (s !== '') {
       _this.stringArray.push(s);
     }
   });
-};
-
-GoalString.prototype.calculateScore = function () {
-
-  var FRAMECOUNTS = 10;
-  var frame = new Frame();
-  var score = 0;
-  for (var i = 0; i < FRAMECOUNTS; i++) {
-      var array = this.stringArray.slice(i);
-      score += frame.getScore(array);
-  }
-  return score;
-
+  return this.stringArray;
 };
 
 module.exports = GoalString;
