@@ -1,6 +1,6 @@
 'use strict';
 
-var GoalString = require('./goal-string');
+var GoalArray = require('./goal-array');
 var Frame = require('./frame');
 
 function Calculation() {
@@ -8,7 +8,7 @@ function Calculation() {
 }
 
 Calculation.prototype.calculateScore = function (string) {
-  var goalString = new GoalString(string);
+  var goalString = new GoalArray(string);
   var stringArray = goalString.getStringArray();
 
   var frame = new Frame();
