@@ -1,11 +1,11 @@
 'use strict';
 
-function GoalString(string) {
+function GoalArray(string) {
   this.string = string;
   this.stringArray = [];
 }
 
-GoalString.prototype.getStringArray = function () {
+GoalArray.prototype.getStringArray = function () {
   var stringArray = this.string.split('|');
   var _this = this;
   stringArray.map(function (s) {
@@ -16,4 +16,4 @@ GoalString.prototype.getStringArray = function () {
   return this.stringArray;
 };
 
-module.exports = GoalString;
+module.exports = GoalArray;
