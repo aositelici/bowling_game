@@ -8,8 +8,8 @@ function Calculation() {
 }
 
 Calculation.prototype.calculateScore = function (string) {
-  var goalString = new GoalArray(string);
-  var stringArray = goalString.getStringArray();
+  var goalArray = new GoalArray(string);
+  var stringArray = goalArray.getStringArray();
 
   var frame = new Frame();
   var score = 0;
