@@ -1,10 +1,10 @@
 'use strict';
 
-var Calculation = require('./model/calculation');
+var Game = require('./model/game');
 
 function calculateScore(string) {
-  var calculation = new Calculation();
-  var score = calculation.calculateScore(string);
+  var game = new Game();
+  var score = game.calculateScore(string);
   console.log(score);
 }
 
