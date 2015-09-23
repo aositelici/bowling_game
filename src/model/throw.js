@@ -6,34 +6,26 @@ function Throw(string) {
 }
 
 Throw.prototype.getThrowArray = function () {
+
   var array = this.getStringArray();
 
   var _this = this;
-  array.map(function(a) {
-    if(a === 'X'){
-      _this.throwArray.push([10]);
-    }else if(a.indexOf('/') !== -1) {
-      var subArray = [];
-      var stringArray = a.split('');
+  array.map(function (a) {
+    if (a === 'X') {
+      _this.beStrikeThrow();
 
-      stringArray.forEach(function (string) {
-        subArray.push(isNaN(Number(string)) ? 10 - subArray[0] : Number(string));
-      });
-      _this.throwArray.push(subArray);
-    }else{
-      var subArray = [];
-      var stringArray = a.split('');
+    } else if (a.indexOf('/') !== -1) {
+      _this.beSpareThrow(a);
 
-      stringArray.forEach(function (string) {
-        subArray.push(isNaN(Number(string)) ? 0 : Number(string));
-      });
-      _this.throwArray.push(subArray);
+    } else {
+      _this.beCommomThrow(a);
     }
   });
   return this.throwArray;
 };
 
-Throw.prototype.getStringArray = function() {
+Throw.prototype.getStringArray = function () {
+
   var stringArray = this.string.split('|');
   var array = [];
   stringArray.map(function (s) {
@@ -42,5 +34,32 @@ Throw.prototype.getStringArray = function() {
     }
   });
   return array;
+};
+
+Throw.prototype.beStrikeThrow = function () {
+
+  this.throwArray.push([10]);
+};
+
+Throw.prototype.beSpareThrow = function (string) {
+
+  var subArray = [];
+  var stringArray = string.split('');
+
+  stringArray.forEach(function (string) {
+    subArray.push(isNaN(Number(string)) ? 10 - subArray[0] : Number(string));
+  });
+  this.throwArray.push(subArray);
+};
+
+Throw.prototype.beCommomThrow = function (string) {
+
+  var subArray = [];
+  var stringArray = string.split('');
+
+  stringArray.forEach(function (string) {
+    subArray.push(isNaN(Number(string)) ? 0 : Number(string));
+  });
+  this.throwArray.push(subArray);
 };
 module.exports = Throw;
